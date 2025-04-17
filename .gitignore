@@ -1,0 +1,12 @@
+**/target
+**/Cargo.lock
+
+# Cargo config
+.cargo
+
+# Profile-guided optimization
+/tmp
+pgo-data.profdata
+
+# MacOS nuisances
+.DS_Store
