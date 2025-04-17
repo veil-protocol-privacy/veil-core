@@ -8,6 +8,12 @@ pub use curves::*;
 pub use utils::*;
 pub use utxo::*;
 
+#[derive(BorshDeserialize, BorshSerialize)]
+pub struct SP1Groth16Proof {
+    pub proof: Vec<u8>,
+    pub sp1_public_inputs: Vec<u8>,
+}
+
 #[derive(Debug, BorshSerialize, BorshDeserialize, Clone)]
 pub struct Arguments {
     pub public_data: PublicData,
