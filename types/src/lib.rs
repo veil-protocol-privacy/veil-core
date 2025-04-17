@@ -1,10 +1,12 @@
 use borsh::{BorshDeserialize, BorshSerialize};
 
 pub mod curves;
+pub mod merkle_sparse;
 pub mod utils;
 pub mod utxo;
 
 pub use curves::*;
+pub use merkle_sparse::*;
 pub use utils::*;
 pub use utxo::*;
 

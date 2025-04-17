@@ -66,7 +66,7 @@ fn main() {
             assert!(nullifier.eq(&nullifier_hash));
         });
 
-    let root = args.public_data.merkle_root;
+    let root = args.public_data.merkle_root.clone();
     let token_id = args.private_data.token_id;
 
     for i in 0..input_count {
@@ -104,6 +104,9 @@ fn main() {
     let sum_id = args.private_data.amount_in.iter().sum::<u64>();
     let sum_out = args.private_data.amount_out.iter().sum::<u64>();
     assert!(sum_id == sum_out);
+
+    let serialize_public_data = borsh::to_vec(&args.public_data).unwrap();
+    sp1_zkvm::io::commit_slice(&serialize_public_data);
 }
 
 fn merkle_proof_check(
