@@ -5,7 +5,7 @@ use borsh::BorshDeserialize;
 use ed25519_dalek::{Signature, VerifyingKey};
 use types::{
     utils::{hash_left_right, sha256},
-    Arguments,
+    Arguments, PublicValue,
 };
 
 fn main() {
@@ -105,8 +105,13 @@ fn main() {
     let sum_out = args.private_data.amount_out.iter().sum::<u64>();
     assert!(sum_id == sum_out);
 
-    let serialize_public_data = borsh::to_vec(&args.public_data).unwrap();
-    sp1_zkvm::io::commit_slice(&serialize_public_data);
+    let public_value = PublicValue {
+        root: args.public_data.merkle_root,
+        nullifiers: args.public_data.nullifiers,
+        output_hashes: args.public_data.output_hashes,
+    };
+    let serialize_public_value = borsh::to_vec(&public_value).unwrap();
+    sp1_zkvm::io::commit_slice(&serialize_public_value);
 }
 
 fn merkle_proof_check(
