@@ -48,6 +48,12 @@ pub struct PrivateData {
 }
 
 #[derive(Debug, BorshSerialize, BorshDeserialize, Clone)]
+pub struct PublicValue {
+    pub root: Vec<u8>,
+    pub nullifiers: Vec<Vec<u8>>,
+    pub output_hashes: Vec<Vec<u8>>,
+}
+#[derive(Debug, BorshSerialize, BorshDeserialize, Clone)]
 pub struct CommitmentPlainText {
     pub master_pubkey: Vec<u8>,
     pub random: Vec<u8>,
