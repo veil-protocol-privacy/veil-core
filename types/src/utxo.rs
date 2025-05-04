@@ -40,6 +40,14 @@ impl UTXO {
         }
     }
 
+    pub fn amount(&self) -> u64 {
+        self.amount
+    }
+
+    pub fn token_id(&self) -> Vec<u8> {
+        self.token_id.clone()
+    }
+
     pub fn viewing_key(&self) -> Vec<u8> {
         self.viewing_key.clone()
     }
