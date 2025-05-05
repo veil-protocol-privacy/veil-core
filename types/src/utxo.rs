@@ -7,8 +7,9 @@ use aes_gcm::{
 };
 use borsh::{BorshDeserialize, BorshSerialize};
 use ed25519_dalek::{ed25519::signature::SignerMut, SigningKey, SECRET_KEY_LENGTH};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, BorshSerialize, BorshDeserialize, Clone)]
+#[derive(Debug, BorshSerialize, BorshDeserialize, Serialize, Deserialize, Clone)]
 pub struct UTXO {
     spending_key: Vec<u8>,
     viewing_key: Vec<u8>,

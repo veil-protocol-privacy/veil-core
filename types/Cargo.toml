@@ -12,3 +12,5 @@ sha3 = "0.10"
 aes-gcm = "0.10.3"
 solana-sha256-hasher = "2.2.1"
 primitive-types = "0.12"
+serde = { workspace = true }
+serde_json = { workspace = true }
