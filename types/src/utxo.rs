@@ -57,6 +57,10 @@ impl UTXO {
         self.nonce.clone()
     }
 
+    pub fn random(&self) -> Vec<u8> {
+        self.random.clone()
+    }
+
     pub fn nullifying_key(&self) -> Vec<u8> {
         sha256(vec![self.viewing_key.as_slice()])
     }
